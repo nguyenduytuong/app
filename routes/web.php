@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/login');
+
+Auth::routes(['register' => false]);
 
 Route::any('adminer', '\Aranyasen\LaravelAdminer\AdminerController@index');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(
+    ['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']],
+    function () {
+        Route::get('/', function () {
+            return view('home');
+        });
+    }
+);

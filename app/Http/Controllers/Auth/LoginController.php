@@ -37,14 +37,14 @@ class LoginController extends Controller
      *
      * @return string
      */
-    // public function redirectPath(): string
-    // {
-    //     if(auth()->user()->getIsVenueAttribute()){
+    public function redirectPath(): string
+    {
+        // if(auth()->user()->getIsVenueAttribute()){
 
-    //         return RouteServiceProvider::VENUE;
-    //     }
-    //     return RouteServiceProvider::HOME;
-    // }
+        //     return RouteServiceProvider::VENUE;
+        // }
+        return RouteServiceProvider::HOME;
+    }
 
 
 

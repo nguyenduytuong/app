@@ -23,8 +23,8 @@ Route::any('adminer', '\Aranyasen\LaravelAdminer\AdminerController@index');
 Route::group(
     ['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']],
     function () {
-        Route::get('/', function () {
-            return view('home');
+        Route::get('/home', function () {
+            return view('welcome');
         });
     }
 );

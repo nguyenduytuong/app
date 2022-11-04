@@ -184,6 +184,7 @@ return [
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
         ConsoleTVs\Profanity\ProfanityServiceProvider::class,
         LaravelProfane\ProfaneServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

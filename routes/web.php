@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,5 +27,10 @@ Route::group(
         Route::get('/home', function () {
             return view('welcome');
         });
+
+        //Users
+        Route::resource('users', UserController::class, [
+            'except' => ['store', 'update', 'destroy'],
+        ]);
     }
 );

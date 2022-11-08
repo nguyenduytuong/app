@@ -18,6 +18,8 @@ class Index extends Component
 
     public string $search = '';
 
+    public int $perPage;
+
     public array $orderable;
 
     public array $paginationOptions;
@@ -30,14 +32,23 @@ class Index extends Component
             'except' => 'id',
         ],
         'sortDirection' => [
-            'except' => 'desc',
+            'except' => 'asc',
         ],
     ];
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingPerPage()
+    {
+        $this->resetPage();
+    }
 
     public function mount()
     {
         $this->sortBy = 'id';
-        $this->sortDirection = 'desc';
+        $this->sortDirection = 'asc';
         $this->perPage = 100;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable = (new User())->orderable;
@@ -51,7 +62,7 @@ class Index extends Component
             'order_direction' => $this->sortDirection,
         ]);
 
-        $users = $query->paginate(10);
+        $users = $query->paginate($this->perPage);
 
         return view('livewire.user.index', compact('users', 'query'));
     }

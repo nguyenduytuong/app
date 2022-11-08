@@ -1,7 +1,7 @@
 <table class="table-auto mt-6">
     <thead>
         <tr>
-            <th>Name
+            <th class="text-green-500">Name
                 @include('components.table.sort', ['field' => 'name'])
             </th>
             <th>Email @include('components.table.sort', ['field' => 'email'])</th>

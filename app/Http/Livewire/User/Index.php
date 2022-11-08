@@ -45,13 +45,13 @@ class Index extends Component
 
     public function render()
     {
-        $users = User::advancedFilter([
+        $query = User::advancedFilter([
             's' => $this->search ?: null,
             'order_column' => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
 
-        $query = $users->paginate(10);
+        $users = $query->paginate(10);
 
         return view('livewire.user.index', compact('users', 'query'));
     }

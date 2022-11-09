@@ -6,7 +6,6 @@
 /storage/logs
 /storage/*.key
 /storage/apple-key/auth-key.txt
-/vendor
 .env
 .env.backup
 .phpunit.result.cache

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::redirect('/', '/login');
+// Route::redirect('/', '/login');
 
 Auth::routes(['register' => false]);
 

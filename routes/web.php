@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,21 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::redirect('/', '/login');
+Route::redirect('/', '/login');
 
 Auth::routes(['register' => false]);
 
 Route::any('adminer', '\Aranyasen\LaravelAdminer\AdminerController@index');
+//  Route::post('auth/login-social', [
+//     LoginController::class,
+//     'socialLogin',
+// ])->name('socialLogin');
+
+Route::get('auth/google', [LoginController::class, 'redirect'])->name('redirect');
+Route::get('google/call-back', [LoginController::class, 'socialLogin'])->name('socialLogin');
+
+Route::get('auth/facebook', [LoginController::class, 'facebookRedirect'])->name('facebookRedirect');
+Route::get('facebook/call-back', [LoginController::class, 'loginWithFacebook'])->name('loginWithFacebook');
 
 Route::group(
     ['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']],

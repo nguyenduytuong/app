@@ -185,6 +185,7 @@ return [
         ConsoleTVs\Profanity\ProfanityServiceProvider::class,
         LaravelProfane\ProfaneServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -215,6 +216,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,      
     ])->toArray(),
 
 ];

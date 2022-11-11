@@ -7,6 +7,8 @@ use Livewire\WithPagination;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;
+use App\Mail\DemoMail;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Index extends Component
@@ -65,5 +67,15 @@ class Index extends Component
         $users = $query->paginate($this->perPage);
 
         return view('livewire.user.index', compact('users', 'query'));
+    }
+
+    public function submit()
+    {
+        dd(1);
+        $mailData = [
+            'title' => 'Mail from ItSolutionStuff.com',
+            'body' => 'This is for testing email using smtp.'
+        ];
+        Mail::to('test@yopmail.com')->send(new DemoMail($mailData));
     }
 }

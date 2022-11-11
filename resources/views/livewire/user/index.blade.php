@@ -108,6 +108,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{-- @dd($users->links()) --}}
                 {{ $users->links() }}
                 {{-- <div
                     class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
@@ -142,6 +143,10 @@
         </div>
     </div>
 </div>
+
+<form wire:submit.prevent="submit" class="pt-3"><button  type="submit">
+    send Mail
+</button></form>
 
 {{-- @push('scripts')
     <script>

@@ -25,6 +25,9 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'created_at',
         'updated_at',
+        'provider_id',
+        'provider_name', 
+        'password',
     ];
 
     public $filterable = [
@@ -41,7 +44,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $hidden = [
-        'provider_name', 'provider_id', 'password', 'remember_token',
+        'provider_name', 'provider_id','password'
     ];
 
     public $orderable = [
@@ -80,5 +83,4 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
 }

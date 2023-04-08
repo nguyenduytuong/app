@@ -129,6 +129,12 @@
             </div>
         </div>
     </div>
+    <a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logoutform').submit();"
+                        class="sidebar-nav">
+                        <i class="fa-fw fas fa-sign-out-alt"></i>
+                        {{ trans('global.logout') }}
+                    </a>
     <div class="card-body">
         <div class="pt-3">
             {{-- @if ($this->selectedCount) --}}
